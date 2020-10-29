@@ -26,6 +26,20 @@ def send_mail_creditpharma_cn(topic, recipients, body):
     smtp_server = '服务器地址'
     return send_mail(sender, serder_password, sender_identity, smtp_server, topic, recipients, body)
 ~~~
+在 plan/api 中配置并启用 send_notice_mail 的扫送邮箱，所有邮件都将会抄送一份至此邮箱。
+~~~
+...
+def send_notice_mail(notice):
+    is_success = False
+    task = notice.task
+    users_and_emails = get_users_and_emails(notice)
+    creator = '{}{}<{}>'.format(task.creator.last_name, task.creator.first_name, task.creator.email)
+    recipients = users_and_emails[2]
+    executors = users_and_emails[0]
+    creators = users_and_emails[1]
+    # recipients.insert(0, '抄送邮箱')
+...
+~~~
 ## 运行服务
 ~~~
 python manage.py runserver
