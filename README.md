@@ -15,7 +15,9 @@ pip install django-simpleui
 pip install python-dateutil
 ~~~
 ## 配置邮件服务器
-修改 shanks\mail.py 文件
+修改 shanks\mail.py 文件。
+### 注意
+邮件 SMTP 服务器需使用 SSL 且端口为标准 465 端口。
 ~~~
 def send_mail_creditpharma_cn(topic, recipients, body):
     sender = '邮箱帐号'
