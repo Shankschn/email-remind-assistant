@@ -40,6 +40,24 @@ def send_notice_mail(notice):
     # recipients.insert(0, '抄送邮箱')
 ...
 ~~~
+## 配置 Django-crontab 定时服务
+默认：早 8 点 10 分 至晚 6 点 10 分，每小时检查一次是否有需要通知的邮件。若需修改，在 settings.py 中修改。
+~~~
+CRONJOBS = [
+    ('10 8-18/1 * * *', 'shanks.crontab.my_crontab', '>>/www/txgj/shanks/crontab.log')
+]
+~~~
+修改完成后，添加到到定时任务 crontab 中。
+~~~
+# 添加定时任务
+python manage.py crontab add
+
+# 查看定时任务
+python manage.py crontab show
+
+# 查看定时任务
+python manage.py crontab remove
+~~~
 ## 运行服务
 ~~~
 python manage.py runserver
