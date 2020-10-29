@@ -60,7 +60,7 @@ def send_notice_mail(notice):
     recipients = users_and_emails[2]
     executors = users_and_emails[0]
     creators = users_and_emails[1]
-    recipients.insert(0, 'admin@creditpharma.cn')
+    # recipients.insert(0, '抄送邮箱')
     plan_time = time_to_str(time_add_day(date_to_time_max(notice.notice_time_estimated.date()), task.rule.advance_time))
     body = '''
 任务名称：{0}——{1}
@@ -73,7 +73,7 @@ def send_notice_mail(notice):
     '''.format(task.name, task.rule.name, creator, executors, creators, plan_time)
 
     topic = notice.name + '——即将进行，任务预计提醒时间：' + time_to_str(notice.notice_time_estimated)
-    if mail.send_mail_creditpharma_cn(topic, recipients, body):
+    if mail.send_mail_public(topic, recipients, body):
         notice.notice_time_actual = today()
         notice.is_email = True
         notice.save()
