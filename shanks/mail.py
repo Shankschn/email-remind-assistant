@@ -48,7 +48,7 @@ def send_mail(sender, serder_password, sender_identity, smtp_server, topic, reci
     return is_mail_success,
 
 
-def send_mail_creditpharma_cn(topic, recipients, body):
+def send_mail_public(topic, recipients, body):
     sender = '邮箱帐号'
     serder_password = '游戏密码'
     sender_identity = '发件人身份'
