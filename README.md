@@ -7,12 +7,13 @@ https://yudelei.com/169.html
 email-remind-assistant 是一个电子邮件提醒助手。可以在规定时间通过发送电子邮件来提醒用户。
 ## 环境
 Python 3.7
-## 安装 pip 包
+## 依赖包
 ~~~
 pip install django=2.2.*
 pip install mysqlclient
 pip install django-simpleui
 pip install python-dateutil
+pip install django-crontab
 ~~~
 ## 配置邮件服务器
 修改 shanks\mail.py 文件。
